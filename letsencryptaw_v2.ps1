@@ -11,8 +11,14 @@
 #           - Choose redirection target: External site
 #           - Target URL: <Blob public path of the previously created storage account>
 #                - Example: 'https://test.blob.core.windows.net/public'
-#      - For execution on Azure Automation: Import 'AzureRM.profile', 'AzureRM.Network'
-#        and 'ACMESharp' modules in Azure
+#      - For execution on Azure Automation
+#           - Import modules:
+#               - 'Az.Accounts'
+#               - 'Az.Network'
+#               - 'Az.Storage'
+#               - 'ACME-PS'
+#               - 'ACMESharp'
+#           - Give the AA Managed Identity access to the App Gateway and Storage Account.
 #
 #      UPDATE 2019-11-27
 #      - Due to deprecation of ACMEv1, a new script is required to use ACMEv2.
@@ -21,6 +27,14 @@
 #      UPDATE 2020-09-03
 #      - Migrated to Az modules.
 #        Following modules are needed now: Az.Accounts, Az.Network, Az.Storage
+#
+#      UPDATE 2022-10-26
+#      - Added support for www domain.
+#        Good starting-point for adding more domains.
+#      - Use Managed Identity for connecting.
+#      - Force the ACME Account Key create.
+#      - Add foreach for looping through the ACME authorization challenges.
+#      - Use Update-ACMEOrder instead of Update-Order.
 #
 #######################################################################################
 
